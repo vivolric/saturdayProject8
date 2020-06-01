@@ -1,6 +1,23 @@
 package Mortgage;
 
-public class Users {
+public class Users {     // parent classs
+     /*
+            Create private following variables
+            String username
+            String WhichCondition
+            String houseType
+            int roomCount
+            int downPayment
+            int longTerm
+            StatesTax statesTax;
+
+        Create a constructor  using all the variables.
+         */
+
+    /*
+    Create the read-only method of the all variables  ->> getter
+     */
+
     private String username, whichCondition, houseType;
     private int roomCount, downPayment, longTerm;
     private StatesTax statesTax;
@@ -43,23 +60,7 @@ public class Users {
         return statesTax;
     }
 
-    /*
-            Create private following variables
-            String username
-            String WhichCondition
-            String houseType
-            int roomCount
-            int downPayment
-            int longTerm
-            StatesTax statesTax;
-        Create a constructor  using all the variables.
-         */
 
-
-
-    /*
-    Create the read-only method of the all variables
-     */
 
 
 }

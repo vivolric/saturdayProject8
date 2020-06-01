@@ -23,8 +23,11 @@ public enum StatesTax {
                 NEWJERSEY amount of the tax 15
                 FLORIDA amount of the tax 5
                 OHIO amount of the tax 12
+
                 create a private vairable int tax;
+
                 create the constructor
+
                 create a read method of the tax
     */
 

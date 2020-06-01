@@ -3,73 +3,17 @@ package Mortgage;
 public class HousePrices extends Users {
     private int price;
 
-    public HousePrices(String username, String whichCondition, String houseType, int roomCount, int downPayment, int longTerm, StatesTax statesTax) {
-        super(username, whichCondition, houseType, roomCount, downPayment, longTerm, statesTax);
-    }
-
-    public void roomCountToPrice() {
-        if (getRoomCount() == 0) {
-            price += 10_000;
-        } else if (getRoomCount() == 1) {
-            price += 20_000;
-        } else if (getRoomCount() == 2) {
-            price += 30_000;
-        } else if (getRoomCount() == 3) {
-            price += 40_000;
-        } else if (getRoomCount() == 4) {
-            price += 50_000;
-        } else if (getRoomCount() == 5) {
-            price += 60_000;
-        }
-    }
-
-    public void conditionToPrice() {
-        if (getWhichCondition().equalsIgnoreCase("new")) {
-            price += 50_000;
-        } else if (getWhichCondition().equalsIgnoreCase("like new")) {
-            price += 40_000;
-        } else if (getWhichCondition().equalsIgnoreCase("old")) {
-            price += 30_000;
-        } else if (getWhichCondition().equalsIgnoreCase("Renew Required")) {
-            price += 15_000;
-        }
-    }
-
-    public void houseTypeToPrice() {
-        if (getHouseType().equalsIgnoreCase("Apartment")) {
-            price += 20_000;
-        } else if (getHouseType().equalsIgnoreCase("Condo")) {
-            price += 30_000;
-        } else if (getHouseType().equalsIgnoreCase("House")) {
-            price += 40_000;
-        }
-
-    }
-
-    public int getPriceTotal() {
-        houseTypeToPrice();
-        conditionToPrice();
-        roomCountToPrice();
-        price = (price + ((price * getStatesTax().getTax()) / 100));
-        return price;
-    }
-
-    public int getPriceEachMonth() {
-        int down = getDownPayment();
-        int term = getLongTerm();
-        return (price - down) / term;
-    }
-
-
     /*
             This class is extending the Users class
             1 private int variable price
      */
 
+    public HousePrices(String username, String whichCondition, String houseType, int roomCount,
+                       int downPayment, int longTerm, StatesTax statesTax) {
+        super(username, whichCondition, houseType, roomCount, downPayment, longTerm, statesTax);
+    } // saga tikla gelsin bu constructor
 
-
-
-    /*
+ /*
         Create a method name is roomCountToPrice
         no parameter
         no return type
@@ -87,6 +31,22 @@ public class HousePrices extends Users {
             add 60000 to price
      */
 
+    public void roomCountToPrice() {
+
+        if (getRoomCount() == 0) {
+            price += 10_000;
+        } else if (getRoomCount() == 1) {
+            price += 20_000;
+        } else if (getRoomCount() == 2) {
+            price += 30_000;
+        } else if (getRoomCount() == 3) {
+            price += 40_000;
+        } else if (getRoomCount() == 4) {
+            price += 50_000;
+        } else if (getRoomCount() == 5) {
+            price += 60_000;
+        }
+    }
 
     /*
         Create a method name is ConditionToPrice
@@ -102,8 +62,17 @@ public class HousePrices extends Users {
                 add 15000 to price
      */
 
-
-
+    public void conditionToPrice() {
+        if (getWhichCondition().equalsIgnoreCase("new")) {
+            price += 50_000;
+        } else if (getWhichCondition().equalsIgnoreCase("like new")) {
+            price += 40_000;
+        } else if (getWhichCondition().equalsIgnoreCase("old")) {
+            price += 30_000;
+        } else if (getWhichCondition().equalsIgnoreCase("Renew Required")) {
+            price += 15_000;
+        }
+    }
 
     /*
         Create a method name is houseTypeToPrice
@@ -117,8 +86,16 @@ public class HousePrices extends Users {
                 add 40000 to price
      */
 
+    public void houseTypeToPrice() {
+        if (getHouseType().equalsIgnoreCase("Apartment")) {
+            price += 20_000;
+        } else if (getHouseType().equalsIgnoreCase("Condo")) {
+            price += 30_000;
+        } else if (getHouseType().equalsIgnoreCase("House")) {
+            price += 40_000;
+        }
 
-
+    }
 
     /*
             Create a method name is getPriceTotal
@@ -128,14 +105,27 @@ public class HousePrices extends Users {
             For the tax percentage use the StatesTax enum
      */
 
-
+    public int getPriceTotal() {
+        houseTypeToPrice();
+        conditionToPrice();
+        roomCountToPrice();
+        price = (price + ((price * getStatesTax().getTax()) / 100));
+        //      Ohio  * % 12
+        return price;
+    }
 
 
     /*
         Create a method name is getPriceEachMonth
             Return the monthly payment amount.
             reduce the downpayment and calculate the each month's payment
+
+            bu son kisim icin test1 bakicaz albayim
      */
 
-
+    public int getPriceEachMonth() {
+        int down = getDownPayment();
+        int term = getLongTerm();
+        return (price - down) / term;
+    }
 }
